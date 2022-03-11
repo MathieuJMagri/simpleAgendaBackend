@@ -1,0 +1,62 @@
+{
+  "name": "ECSE428_Project_Backend",
+  "version": "1.0.0",
+  "description": "ECSE428 Todo application project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "babel-node src/app",
+    "clean": "rm -rf build && mkdir build",
+    "build-babel": "babel -d ./build ./src -s",
+    "build": "npm run clean && npm run build-babel",
+    "start": "npm run build && node ./build/app.js",
+    "start:dev": "nodemon --exec babel-node ./src/app.js"
+  },
+  "keywords": [
+    "heroku"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.5",
+    "@babel/node": "^7.15.4",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.15.6",
+    "@babel/runtime": "^7.15.4",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.17.1",
+    "mongodb": "^3.1.10",
+    "nodemon": "^2.0.13"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "devDependencies": {},
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-transform-runtime"
+      ],
+      [
+        "module-resolver",
+        {
+          "root": [
+            "./src"
+          ],
+          "alias": {
+            "test": "./test",
+            "underscore": "lodash"
+          }
+        }
+      ]
+    ]
+  }
+}
